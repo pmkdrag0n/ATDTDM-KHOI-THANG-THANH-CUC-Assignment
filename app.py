@@ -3,7 +3,7 @@ import mariadb
 def get_conn():
    config = {
       'host': 'db',
-      'port': 30000,
+      'port': 3306,
       'user': 'root',
       'password': 'P@ss1234',
       'database': 'QLBH'
@@ -11,7 +11,7 @@ def get_conn():
    conn = mariadb.connect(**config)
    return conn
 # create the flask app
-app = Flask(__name__)
+app = Flask(__name__,template_folder='Templates')
 
 @app.route('/', methods=['GET'])
 def index():
@@ -98,4 +98,4 @@ def create_items():
    return render_template('create_items.html', error=error)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=5000)
+    app.run(host="0.0.0.0",port=80)
