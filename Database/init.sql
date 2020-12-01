@@ -1,3 +1,5 @@
+create database QLBH
+use database QLBH
 create table LoaiSPs
 (
     loai_sp_masp varchar(255) not null
