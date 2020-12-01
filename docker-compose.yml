@@ -13,3 +13,6 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: P@ss1234
+      MYSQL_DATABASE: QLBH
+    volumes:
+      - ./Database:/docker-entrypoint-initdb.d/:ro
