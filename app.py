@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import mariadb
 def get_conn():
-
    config = {
       'host': '127.0.0.1',
       'port': 3306,
@@ -14,9 +13,11 @@ def get_conn():
 # create the flask app
 app = Flask(__name__)
 app.config["DEBUG"] = True
+
 @app.route('/', methods=['GET'])
 def index():
    return render_template('index.html')
+
 @app.route('/users', methods=['GET'])
 def users_info():
    conn = get_conn()
@@ -25,6 +26,7 @@ def users_info():
    data = cur.fetchall()
    conn.close()
    return render_template('user_table.html', data=data)
+
 @app.route('/users', methods=['POST'])
 def users_info_post():
    id = request.form['text']
@@ -37,6 +39,7 @@ def users_info_post():
    data = cur.fetchall()
    conn.close()
    return render_template('user_table.html',data=data)
+
 @app.route('/create_users', methods=['GET','POST'])
 def create_users():
    error = None
@@ -54,6 +57,7 @@ def create_users():
         conn.commit()
         conn.close()
    return render_template('create_users.html', error=error)
+
 @app.route('/items',methods = ['GET'])
 def sp_info():
    conn = get_conn()
@@ -62,6 +66,20 @@ def sp_info():
    data = cur.fetchall()
    conn.close()
    return render_template('item_table.html',data=data)
+
+@app.route('/items', methods=['POST'])
+def sp_info_post():
+   id = request.form['text']
+   conn = get_conn()
+   cur = conn.cursor()
+   queryMess = """ DELETE FROM SanPhams WHERE maSP="{}" ;""".format(id)
+   cur.execute(queryMess)
+   conn.commit()
+   cur.execute("select * from SanPhams")
+   data = cur.fetchall()
+   conn.close()
+   return render_template('item_table.html',data=data)
+
 @app.route('/create_items', methods=['GET','POST'])
 def create_items():
    error = None
@@ -79,5 +97,6 @@ def create_items():
         conn.commit()
         conn.close()
    return render_template('create_items.html', error=error)
-# run the app
+
+
 app.run()
