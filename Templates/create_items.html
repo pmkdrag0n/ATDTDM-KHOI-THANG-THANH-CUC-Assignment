@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Them San Pham</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Them san pham</h1>
+    <br>
+    <form action="" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" style="width:50%;" placeholder="Ma San Pham" name="maSP" value="{{
+          request.form.maSP }}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" style="width:50%;" placeholder="Ten San Pham" name="tenSP" value="{{
+          request.form.tenSP }}">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" style="width:50%;" placeholder="Don vi tinh" name="dvt" value="{{
+        request.form.dvt }}">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" style="width:50%;" placeholder="Gia" name="gia" value="{{
+        request.form.gia }}">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" style="width:50%;" placeholder="Loai San Pham" name="loai_sp_masp" value="{{
+        request.form.loai_sp_masp }}">
+      </div>
+      <input class="btn btn-success" type="submit" value="Them">
+    </form>
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+</div>
+<a href="/" >
+    <button type="button">Back</button>
+</a>
+</body>
+</html>
