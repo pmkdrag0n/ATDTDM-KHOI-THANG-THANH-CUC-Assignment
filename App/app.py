@@ -2,17 +2,16 @@ from flask import Flask, render_template, request
 import mariadb
 def get_conn():
    config = {
-      'host': '127.0.0.1',
-      'port': 3306,
+      'host': 'db',
+      'port': 30000,
       'user': 'root',
-      'password': 'Thanh@123',
+      'password': 'P@ss1234',
       'database': 'QLBH'
    }
    conn = mariadb.connect(**config)
    return conn
 # create the flask app
 app = Flask(__name__)
-app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def index():
@@ -98,5 +97,5 @@ def create_items():
         conn.close()
    return render_template('create_items.html', error=error)
 
-
-app.run()
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",port=5000)
