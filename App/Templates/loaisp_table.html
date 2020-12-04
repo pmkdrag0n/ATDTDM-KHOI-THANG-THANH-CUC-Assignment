@@ -1,15 +1,12 @@
 <html>
     <body>
         {% block content %}
-            <h1>{% block title %} Hien thi thong tin san pham{% endblock %}</h1>
+            <h1>{% block title %} Hien thi thong tin loai san pham {% endblock %}</h1>
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Ma san pham</th>
-                        <th>Ten san pham</th>
-                        <th>Don vi tinh</th>
-                        <th>Gia</th>
-                        <th>Loai San Pham</th>
+                        <th>Ma loai san pham</th>
+                        <th>Xuat Xu</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,15 +22,11 @@
                 </tbody>
             </table>
         {% endblock %}
-        <a href="/create_items" >
+        <a href="/create_loaisp" >
             <button type="button">Them</button>
         </a>
         <a href="/" >
             <button type="button">Back</button>
-        </a>
-        <form method="POST">
-            <input name="text" placeholder="Ma san pham">
-            <input type="submit" value="Xoa">
-        </form>           
+        </a>         
 </body>
 </html>
