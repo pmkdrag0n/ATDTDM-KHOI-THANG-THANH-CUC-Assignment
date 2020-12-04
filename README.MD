@@ -3,7 +3,7 @@
 - Phạm Minh Khôi
 - Trương Đức Thắng
 - Đinh Thị Giang Thanh
-- Nguyễn Thị Cúc
+- Hoàng Thị Cúc
 ## Yêu cầu:
 - Máy linux đã cài Docker và Docker-compose
 - Port 5000 không có dịch vụ nào sử dụng
