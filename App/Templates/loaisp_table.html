@@ -1,7 +1,16 @@
 <html>
+    <style> table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+        th, td {
+        padding: 5px;
+        text-align: Center;    
+        }
+    </style>
     <body>
         {% block content %}
-            <h1>{% block title %} Hien thi thong tin loai san pham {% endblock %}</h1>
+            <h1>{% block title %} Hien thi thong tin xuat xu san pham {% endblock %}</h1>
             <table border="1">
                 <thead>
                     <tr>
