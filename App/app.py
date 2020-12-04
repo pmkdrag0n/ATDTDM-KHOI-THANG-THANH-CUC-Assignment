@@ -96,6 +96,43 @@ def create_items():
         conn.commit()
         conn.close()
    return render_template('create_items.html', error=error)
-
+@app.route('/loaisp', methods=['GET'])
+def loaisp_info():
+   conn = get_conn()
+   cur = conn.cursor()
+   cur.execute("select * from LoaiSPs")
+   data = cur.fetchall()
+   conn.close()
+   return render_template('loaisp_table.html',data=data)
+@app.route('/create_loaisp', methods=['GET','POST'])
+def create_loaisp():
+   error = None
+   conn = get_conn()
+   cur = conn.cursor()
+   if request.method =='POST':
+        maLoaiSp = request.form['loai_sp_masp']
+        xuatXu = request.form['xuatXu']
+        queryMess = """insert into SanPhams (loai_sp_masp,xuatXu)
+                        values('{}','{}');""".format(maLoaiSp,xuatXu)
+        cur.execute(queryMess)
+        conn.commit()
+        conn.close()
+   return render_template('create_loaisp.html', error=error) 
+@app.route('/hoadon', methods=['GET'])
+def hoadon_info():
+   conn = get_conn()
+   cur = conn.cursor()
+   cur.execute("select * from HoaDons")
+   data = cur.fetchall()
+   conn.close()
+   return render_template('hoadon_table.html',data=data)
+@app.route('/cthd', methods=['GET'])
+def cthd_info():
+   conn = get_conn()
+   cur = conn.cursor()
+   cur.execute("select * from CTHDs")
+   data = cur.fetchall()
+   conn.close()
+   return render_template('cthd_table.html',data=data)
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
